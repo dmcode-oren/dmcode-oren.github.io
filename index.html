@@ -1,28 +1,897 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Orenio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orenio | Focus, Simplified.</title>
+  <meta name="description" content="Orenio is a clean, distraction-free focus timer designed for deep work. No gamification. No gimmicks. Just focus." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
   <style>
+    :root {
+      --bg: #0E0E10;
+      --surface: #1A1A1F;
+      --surface-elevated: #222228;
+      --text: #F5F5F7;
+      --muted: #A1A1AA;
+      --accent: #FF6A1A;
+      --accent-premium: #F25C05;
+      --error: #CF6679;
+      --border: #2A2A31;
+      --border-soft: rgba(161, 161, 170, 0.12);
+      --border-strong: rgba(161, 161, 170, 0.18);
+      --nav-bg: rgba(14, 14, 16, 0.78);
+      --nav-border: rgba(34, 34, 40, 0.9);
+      --section-wash: linear-gradient(180deg, rgba(26, 26, 31, 0.18), rgba(14, 14, 16, 0));
+      --hero-glow: radial-gradient(circle, rgba(255, 106, 26, 0.22) 0%, rgba(255, 106, 26, 0.08) 48%, rgba(255, 106, 26, 0) 72%);
+      --hero-ring: rgba(255, 106, 26, 0.22);
+      --shadow-strong: 0 32px 60px rgba(0, 0, 0, 0.45);
+      --shadow-inset: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+      --placeholder-border: rgba(161, 161, 170, 0.65);
+      --max-width: 1100px;
+      --radius: 20px;
+      --nav-height: 78px;
+      color-scheme: dark;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #FAFAFA;
+        --surface: #FFFFFF;
+        --surface-elevated: #F3F4F6;
+        --text: #111111;
+        --muted: #6B7280;
+        --border: #E5E7EB;
+        --border-soft: rgba(17, 17, 17, 0.08);
+        --border-strong: rgba(17, 17, 17, 0.12);
+        --nav-bg: rgba(250, 250, 250, 0.82);
+        --nav-border: rgba(229, 231, 235, 0.9);
+        --section-wash: linear-gradient(180deg, rgba(243, 244, 246, 0.9), rgba(250, 250, 250, 0.4));
+        --hero-glow: radial-gradient(circle, rgba(255, 106, 26, 0.14) 0%, rgba(255, 106, 26, 0.05) 50%, rgba(255, 106, 26, 0) 74%);
+        --hero-ring: rgba(255, 106, 26, 0.16);
+        --shadow-strong: 0 24px 42px rgba(17, 17, 17, 0.10);
+        --shadow-inset: inset 0 0 0 1px rgba(17, 17, 17, 0.02);
+        --placeholder-border: rgba(107, 114, 128, 0.5);
+        color-scheme: light;
+      }
+    }
+
+    :root[data-theme='dark'] {
+      --bg: #0E0E10;
+      --surface: #1A1A1F;
+      --surface-elevated: #222228;
+      --text: #F5F5F7;
+      --muted: #A1A1AA;
+      --border: #2A2A31;
+      --border-soft: rgba(161, 161, 170, 0.12);
+      --border-strong: rgba(161, 161, 170, 0.18);
+      --nav-bg: rgba(14, 14, 16, 0.78);
+      --nav-border: rgba(34, 34, 40, 0.9);
+      --section-wash: linear-gradient(180deg, rgba(26, 26, 31, 0.18), rgba(14, 14, 16, 0));
+      --hero-glow: radial-gradient(circle, rgba(255, 106, 26, 0.22) 0%, rgba(255, 106, 26, 0.08) 48%, rgba(255, 106, 26, 0) 72%);
+      --hero-ring: rgba(255, 106, 26, 0.22);
+      --shadow-strong: 0 32px 60px rgba(0, 0, 0, 0.45);
+      --shadow-inset: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+      --placeholder-border: rgba(161, 161, 170, 0.65);
+      color-scheme: dark;
+    }
+
+    :root[data-theme='light'] {
+      --bg: #FAFAFA;
+      --surface: #FFFFFF;
+      --surface-elevated: #F3F4F6;
+      --text: #111111;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --border-soft: rgba(17, 17, 17, 0.08);
+      --border-strong: rgba(17, 17, 17, 0.12);
+      --nav-bg: rgba(250, 250, 250, 0.82);
+      --nav-border: rgba(229, 231, 235, 0.9);
+      --section-wash: linear-gradient(180deg, rgba(243, 244, 246, 0.9), rgba(250, 250, 250, 0.4));
+      --hero-glow: radial-gradient(circle, rgba(255, 106, 26, 0.14) 0%, rgba(255, 106, 26, 0.05) 50%, rgba(255, 106, 26, 0) 74%);
+      --hero-ring: rgba(255, 106, 26, 0.16);
+      --shadow-strong: 0 24px 42px rgba(17, 17, 17, 0.10);
+      --shadow-inset: inset 0 0 0 1px rgba(17, 17, 17, 0.02);
+      --placeholder-border: rgba(107, 114, 128, 0.5);
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0E0E10;
-      color: #F5F5F7;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-    h1 {
-      color: #FF6A1A;
-      font-size: 3rem;
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: clamp(1.85rem, 3vw, 2.5rem);
+      line-height: 1.15;
       font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .section-subtitle {
+      margin: 0;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--nav-border);
+    }
+
+    .top-nav .container {
+      min-height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .logo {
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      font-size: 0.98rem;
+      white-space: nowrap;
+    }
+
+    .logo .oren {
+      color: var(--accent);
+    }
+
+    .logo .io {
+      color: var(--text);
+    }
+
+    .nav-actions,
+    .store-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-actions {
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: background-color 240ms ease, border-color 240ms ease, color 240ms ease, transform 240ms ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      display: block;
+    }
+
+    .btn.btn-primary svg {
+      fill: currentColor;
+    }
+
+    .btn .google-play-icon .gp-green { fill: #34A853; }
+    .btn .google-play-icon .gp-blue { fill: #4285F4; }
+    .btn .google-play-icon .gp-yellow { fill: #FBBC04; }
+    .btn .google-play-icon .gp-red { fill: #EA4335; }
+
+    .btn.btn-primary .google-play-icon .gp-green,
+    .btn.btn-primary .google-play-icon .gp-blue,
+    .btn.btn-primary .google-play-icon .gp-yellow,
+    .btn.btn-primary .google-play-icon .gp-red {
+      fill: currentColor;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--accent-premium);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .btn-secondary {
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      color: var(--text);
+      border-color: var(--border-strong);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      border-color: rgba(255, 106, 26, 0.45);
+      color: var(--text);
+      outline: none;
+    }
+
+    .theme-toggle {
+      min-width: 48px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1;
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus-visible {
+      border-color: rgba(255, 106, 26, 0.35);
+      outline: none;
+    }
+
+    .theme-toggle .theme-toggle__icon {
+      font-size: 1rem;
+    }
+
+    .theme-toggle .theme-toggle__label {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .hero {
+      position: relative;
+      overflow: clip;
+      padding-top: 84px;
+      padding-bottom: 96px;
+    }
+
+    .hero .container {
+      position: relative;
+      display: grid;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 106, 26, 0.24);
+      border-radius: 999px;
+      background: rgba(255, 106, 26, 0.06);
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 0.98;
+      font-weight: 600;
+      letter-spacing: 0.015em;
+    }
+
+    .hero p {
+      margin: 18px auto 0;
+      max-width: 700px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.4vw, 1.12rem);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: grid;
+      place-items: center;
+      z-index: 1;
+      padding-top: 8px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: min(70vw, 520px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--hero-glow);
+      filter: blur(6px);
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .hero-glow::after {
+      content: '';
+      position: absolute;
+      inset: 15%;
+      border: 1px solid var(--hero-ring);
+      border-radius: 50%;
+    }
+
+    .phone-placeholder {
+      position: relative;
+      width: min(100%, 340px);
+      aspect-ratio: 375 / 812;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--surface-elevated) 95%, transparent), color-mix(in srgb, var(--surface) 98%, transparent));
+      border: 1px solid var(--border-strong);
+      border-radius: 34px;
+      box-shadow: var(--shadow-strong), var(--shadow-inset);
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    .phone-placeholder::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 38%;
+      height: 22px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      border: 1px solid var(--border-soft);
+    }
+
+    .placeholder-box {
+      width: 100%;
+      height: 100%;
+      background: var(--surface);
+      border: 1.5px dashed var(--placeholder-border);
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .hero-store {
+      margin-top: 18px;
+    }
+
+    .features {
+      border-top: 1px solid var(--nav-border);
+      border-bottom: 1px solid var(--nav-border);
+      background: var(--section-wash);
+    }
+
+    .features-header {
+      margin-bottom: 28px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .feature-card {
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      background: rgba(255, 106, 26, 0.08);
+      border: 1px solid rgba(255, 106, 26, 0.16);
+      margin-bottom: 14px;
+      font-size: 1.1rem;
+    }
+
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      font-size: 20px;
+      letter-spacing: normal;
+      text-transform: none;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      display: block;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: 'liga';
+    }
+
+    .feature-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.02rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .screenshots-header {
+      margin-bottom: 24px;
+    }
+
+    .screenshot-row {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(220px, 280px);
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x proximity;
+    }
+
+    .screenshot-row::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .screenshot-row::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--muted) 28%, transparent);
+      border-radius: 999px;
+    }
+
+    .screenshot-item {
+      scroll-snap-align: start;
+    }
+
+    .screenshot-item .phone-placeholder {
+      width: 100%;
+    }
+
+    .cta {
+      text-align: center;
+      padding-top: 104px;
+      padding-bottom: 104px;
+    }
+
+    .cta .section-title {
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta .section-subtitle {
+      margin: 14px auto 0;
+    }
+
+    .cta .store-buttons {
+      margin-top: 22px;
+    }
+
+    footer {
+      border-top: 1px solid var(--surface-elevated);
+      background: var(--bg);
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .footer-links a {
+      transition: color 220ms ease;
+    }
+
+    .footer-links a:hover,
+    .footer-links a:focus-visible {
+      color: var(--text);
+      outline: none;
+    }
+
+    .dot {
+      color: rgba(161, 161, 170, 0.7);
+    }
+
+    @media (min-width: 720px) {
+      .hero {
+        padding-top: 96px;
+      }
+
+      .hero-store .store-buttons .btn {
+        min-width: 142px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .screenshot-row {
+        grid-auto-columns: minmax(240px, 290px);
+      }
+    }
+
+    @media (min-width: 980px) {
+      .section {
+        padding: 104px 0;
+      }
+
+      .hero {
+        padding-top: 108px;
+        padding-bottom: 112px;
+      }
+
+      .hero .container {
+        gap: 50px;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .screenshot-row {
+        grid-auto-columns: minmax(250px, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .top-nav .container {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 12px 0;
+      }
+
+      .logo {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-actions {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-actions .btn,
+      .store-buttons .btn,
+      .theme-toggle {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .btn {
+        transition: none;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Orenio</h1>
+  <svg width="0" height="0" style="position:absolute;left:-9999px;visibility:hidden" aria-hidden="true" focusable="false">
+    <symbol id="icon-apple" viewBox="0 0 24 24">
+      <path d="M16.68 12.39c.03 3.14 2.76 4.19 2.79 4.2-.02.07-.43 1.49-1.41 2.96-.85 1.27-1.74 2.53-3.13 2.56-1.37.03-1.81-.81-3.38-.81-1.57 0-2.06.79-3.36.84-1.34.05-2.37-1.35-3.23-2.61-1.75-2.53-3.09-7.16-1.29-10.29.89-1.56 2.49-2.54 4.23-2.56 1.32-.03 2.57.89 3.38.89.81 0 2.33-1.1 3.92-.94.67.03 2.56.27 3.77 2.04-.1.06-2.25 1.31-2.23 3.72ZM14.5 4.2c.72-.87 1.21-2.09 1.08-3.3-1.03.04-2.27.68-3 1.55-.66.77-1.24 2-1.08 3.17 1.15.09 2.33-.58 3-1.42Z"/>
+    </symbol>
+    <symbol id="icon-google-play" viewBox="0 0 24 24">
+      <path class="gp-green" d="M3.75 3.4c-.21.22-.34.54-.34.95v15.3c0 .41.13.73.34.95l.08.07 8.58-8.58v-.18L3.83 3.33l-.08.07Z"/>
+      <path class="gp-blue" d="m15.28 14.94-2.87-2.87v-.18l2.88-2.88.06.04 3.4 1.93c.97.55.97 1.45 0 2l-3.4 1.92-.07.04Z"/>
+      <path class="gp-yellow" d="M15.34 14.9 12.4 11.96 3.75 20.6c.34.36.9.4 1.53.04l10.06-5.74Z"/>
+      <path class="gp-red" d="M15.34 9.1 5.28 3.36c-.63-.36-1.19-.32-1.53.04l8.65 8.65 2.94-2.95Z"/>
+    </symbol>
+  </svg>
+
+  <nav class="top-nav" aria-label="Primary">
+    <div class="container">
+      <a class="logo" href="#top" aria-label="Orenio home">
+        <span class="oren">OREN</span><span class="io">IO</span>
+      </a>
+      <div class="nav-actions">
+        <button class="btn theme-toggle" id="theme-toggle" type="button" aria-label="Toggle day/night theme" title="Toggle day/night theme">
+          <span class="theme-toggle__icon" aria-hidden="true">◐</span>
+          <span class="theme-toggle__label">Theme</span>
+        </button>
+        <a class="btn btn-primary" href="#">
+          <svg aria-hidden="true"><use href="#icon-apple"></use></svg>
+          <span>App Store</span>
+        </a>
+        <a class="btn btn-primary" href="#">
+          <svg class="google-play-icon" aria-hidden="true"><use href="#icon-google-play"></use></svg>
+          <span>Google Play</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-copy">
+          <div class="eyebrow">Calm focus timer</div>
+          <h1 id="hero-title">Focus, Simplified.</h1>
+          <p>Orenio is a clean, distraction-free focus timer designed for deep work. No gamification. No gimmicks. Just focus.</p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-glow" aria-hidden="true"></div>
+          <figure class="phone-placeholder" role="img" aria-label="Orenio timer screen showing a circular progress ring in orange on a dark background with large countdown numbers and minimal controls">
+            <div class="placeholder-box">
+              Orenio timer screen showing a circular progress ring in orange on a dark background with large countdown numbers and minimal controls
+            </div>
+          </figure>
+          <div class="hero-store store-buttons" aria-label="Download Orenio">
+            <a class="btn btn-secondary" href="#">
+              <svg aria-hidden="true"><use href="#icon-apple"></use></svg>
+              <span>App Store</span>
+            </a>
+            <a class="btn btn-secondary" href="#">
+              <svg class="google-play-icon" aria-hidden="true"><use href="#icon-google-play"></use></svg>
+              <span>Google Play</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features section" aria-labelledby="features-title">
+      <div class="container">
+        <div class="features-header">
+          <h2 id="features-title" class="section-title">Built for deep work.</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true"><span class="material-symbols-outlined">timer</span></div>
+            <h3>Pomodoro Timer</h3>
+            <p>25/5/15 focus cycles with start, pause, skip, and reset. Survives backgrounding and screen lock.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true"><span class="material-symbols-outlined">label</span></div>
+            <h3>Session Labels</h3>
+            <p>Tag sessions with labels like Deep Work or Client A. Lightweight categorisation without the overhead of a task manager.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true"><span class="material-symbols-outlined">insights</span></div>
+            <h3>Insights &amp; Streaks</h3>
+            <p>Daily totals, weekly stats, 7-day rolling averages, streak tracking, and label breakdown charts.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true"><span class="material-symbols-outlined">history</span></div>
+            <h3>Full History</h3>
+            <p>Every session logged and grouped by day. Edit labels inline. Load older sessions on demand.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true"><span class="material-symbols-outlined">tune</span></div>
+            <h3>Configurable</h3>
+            <p>Set your own durations, auto-start preferences, sound and vibration. Make it yours.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true"><span class="material-symbols-outlined">contrast</span></div>
+            <h3>Dark &amp; Light Mode</h3>
+            <p>Dark mode by default. Switch to light or follow your system preference.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="screenshots-title">
+      <div class="container">
+        <div class="screenshots-header">
+          <h2 id="screenshots-title" class="section-title">See it in action.</h2>
+        </div>
+
+        <div class="screenshot-row" aria-label="Orenio app screenshots">
+          <div class="screenshot-item">
+            <figure class="phone-placeholder" role="img" aria-label="Orenio timer screen in dark mode with orange circular progress ring, countdown at 24:38, and FOCUS label">
+              <div class="placeholder-box">Orenio timer screen in dark mode with orange circular progress ring, countdown at 24:38, and FOCUS label</div>
+            </figure>
+          </div>
+
+          <div class="screenshot-item">
+            <figure class="phone-placeholder" role="img" aria-label="Orenio insights screen in dark mode showing today's focus time, weekly stats, streak counter, and a 7-day bar chart in orange">
+              <div class="placeholder-box">Orenio insights screen in dark mode showing today's focus time, weekly stats, streak counter, and a 7-day bar chart in orange</div>
+            </figure>
+          </div>
+
+          <div class="screenshot-item">
+            <figure class="phone-placeholder" role="img" aria-label="Orenio history screen in dark mode showing sessions grouped by date with labels and duration">
+              <div class="placeholder-box">Orenio history screen in dark mode showing sessions grouped by date with labels and duration</div>
+            </figure>
+          </div>
+
+          <div class="screenshot-item">
+            <figure class="phone-placeholder" role="img" aria-label="Orenio settings screen in dark mode showing appearance toggle, timer durations, and notification preferences">
+              <div class="placeholder-box">Orenio settings screen in dark mode showing appearance toggle, timer durations, and notification preferences</div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta section" aria-labelledby="cta-title">
+      <div class="container">
+        <h2 id="cta-title" class="section-title">Track your focus. Stay consistent. Build momentum.</h2>
+        <p class="section-subtitle">Available on iOS and Android.</p>
+        <div class="store-buttons" aria-label="Store links">
+          <a class="btn btn-primary" href="#">
+            <svg aria-hidden="true"><use href="#icon-apple"></use></svg>
+            <span>App Store</span>
+          </a>
+          <a class="btn btn-primary" href="#">
+            <svg class="google-play-icon" aria-hidden="true"><use href="#icon-google-play"></use></svg>
+            <span>Google Play</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>&copy; 2025 Orenio. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <span class="dot" aria-hidden="true">&middot;</span>
+        <a href="/terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var storageKey = 'orenio-theme';
+      var root = document.documentElement;
+      var toggle = document.getElementById('theme-toggle');
+      var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+
+      function getStoredTheme() {
+        try {
+          var saved = localStorage.getItem(storageKey);
+          return saved === 'light' || saved === 'dark' ? saved : null;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function getResolvedTheme() {
+        var explicit = root.dataset.theme;
+        if (explicit === 'light' || explicit === 'dark') return explicit;
+        return media && media.matches ? 'dark' : 'light';
+      }
+
+      function setTheme(theme) {
+        if (theme === 'light' || theme === 'dark') {
+          root.dataset.theme = theme;
+          try { localStorage.setItem(storageKey, theme); } catch (e) {}
+        } else {
+          delete root.dataset.theme;
+          try { localStorage.removeItem(storageKey); } catch (e) {}
+        }
+        updateToggle();
+      }
+
+      function updateToggle() {
+        if (!toggle) return;
+        var mode = getResolvedTheme();
+        var isDark = mode === 'dark';
+        var icon = toggle.querySelector('.theme-toggle__icon');
+        var label = toggle.querySelector('.theme-toggle__label');
+        if (icon) icon.textContent = isDark ? '☾' : '☀';
+        if (label) label.textContent = isDark ? 'Night' : 'Day';
+        toggle.setAttribute('aria-pressed', String(isDark));
+        toggle.setAttribute('aria-label', isDark ? 'Switch to day theme' : 'Switch to night theme');
+        toggle.title = (getStoredTheme() ? 'Manual theme selected. ' : 'Using system theme by default. ') +
+          (isDark ? 'Switch to day theme' : 'Switch to night theme');
+      }
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var nextTheme = getResolvedTheme() === 'dark' ? 'light' : 'dark';
+          setTheme(nextTheme);
+        });
+      }
+
+      if (media) {
+        var onChange = function () {
+          if (!getStoredTheme()) updateToggle();
+        };
+        if (typeof media.addEventListener === 'function') {
+          media.addEventListener('change', onChange);
+        } else if (typeof media.addListener === 'function') {
+          media.addListener(onChange);
+        }
+      }
+
+      updateToggle();
+      window.orenio = { version: 'landing-2', theme: getResolvedTheme, setTheme: setTheme };
+    })();
+  </script>
 </body>
 </html>
