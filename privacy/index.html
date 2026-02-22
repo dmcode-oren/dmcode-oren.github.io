@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orenio Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for the Orenio website and mobile app." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #FAFAFA;
+      --surface: #FFFFFF;
+      --surface-elevated: #F3F4F6;
+      --text: #111111;
+      --muted: #6B7280;
+      --accent: #FF6A1A;
+      --accent-premium: #F25C05;
+      --border: #E5E7EB;
+      --border-soft: rgba(17, 17, 17, 0.08);
+      --border-strong: rgba(17, 17, 17, 0.12);
+      --nav-bg: rgba(250, 250, 250, 0.82);
+      --nav-border: rgba(229, 231, 235, 0.9);
+      --card-shadow: 0 24px 42px rgba(17, 17, 17, 0.08);
+      --max-width: 1100px;
+      color-scheme: light;
+    }
+
+    :root[data-theme='dark'] {
+      --bg: #0E0E10;
+      --surface: #1A1A1F;
+      --surface-elevated: #222228;
+      --text: #F5F5F7;
+      --muted: #A1A1AA;
+      --border: #2A2A31;
+      --border-soft: rgba(161, 161, 170, 0.12);
+      --border-strong: rgba(161, 161, 170, 0.18);
+      --nav-bg: rgba(14, 14, 16, 0.78);
+      --nav-border: rgba(34, 34, 40, 0.9);
+      --card-shadow: 0 24px 42px rgba(0, 0, 0, 0.28);
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(100% - 32px, var(--max-width)); margin: 0 auto; }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--nav-border);
+    }
+    .top-nav .container {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 0;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      font-size: 0.98rem;
+      white-space: nowrap;
+    }
+    .logo .oren { color: var(--accent); }
+    .logo .io { color: var(--text); }
+    .nav-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-left: 1px solid var(--border);
+      padding-left: 10px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-strong);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background-color 220ms ease, border-color 220ms ease, color 220ms ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn:hover,
+    .btn:focus-visible {
+      border-color: rgba(255, 106, 26, 0.35);
+      outline: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      border-color: transparent;
+      color: #fff;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--accent-premium);
+      border-color: transparent;
+    }
+    .theme-toggle__label { color: var(--muted); }
+
+    main {
+      padding: 32px 0 80px;
+    }
+
+    .hero-card {
+      background: color-mix(in srgb, var(--surface) 96%, transparent);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--card-shadow);
+      padding: clamp(20px, 4vw, 36px);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
+      background: color-mix(in srgb, var(--accent) 5%, transparent);
+      border-radius: 999px;
+      padding: 6px 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.08;
+      letter-spacing: 0.02em;
+      font-weight: 600;
+    }
+
+    .lede {
+      margin: 14px 0 0;
+      color: var(--muted);
+      max-width: 780px;
+    }
+
+    .meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .notice-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin: 14px 0 0;
+    }
+
+    .notice {
+      background: color-mix(in srgb, var(--surface-elevated) 85%, transparent);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .notice h2 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .notice p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .prose-wrap {
+      background: color-mix(in srgb, var(--surface) 98%, transparent);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--card-shadow);
+      padding: clamp(22px, 4vw, 40px);
+    }
+
+    .prose {
+      max-width: 780px;
+    }
+
+    .prose h2 {
+      margin: 28px 0 10px;
+      font-size: 1.25rem;
+      line-height: 1.25;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .prose h3 {
+      margin: 18px 0 8px;
+      font-size: 1rem;
+      line-height: 1.3;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .prose p {
+      margin: 0 0 12px;
+      color: color-mix(in srgb, var(--text) 92%, var(--muted));
+    }
+
+    .prose ul {
+      margin: 0 0 12px 18px;
+      padding: 0;
+    }
+
+    .prose li {
+      margin: 0 0 8px;
+      color: color-mix(in srgb, var(--text) 92%, var(--muted));
+    }
+
+    .prose strong { color: var(--text); }
+    .prose a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+      text-underline-offset: 2px;
+    }
+
+    .divider {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 18px 0;
+    }
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-top: 18px;
+    }
+    .back-home:hover,
+    .back-home:focus-visible {
+      color: var(--text);
+      outline: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--nav-border);
+      color: var(--muted);
+      background: var(--bg);
+    }
+    .footer-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 0;
+      font-size: 0.9rem;
+    }
+    .footer-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .footer-links a:hover,
+    .footer-links a:focus-visible { color: var(--text); outline: none; }
+
+    @media (min-width: 760px) {
+      .notice-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .top-nav .container {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .nav-left,
+      .nav-actions {
+        width: 100%;
+        justify-content: center;
+      }
+      .nav-label {
+        border-left: 0;
+        padding-left: 0;
+      }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-nav" aria-label="Primary">
+    <div class="container">
+      <div class="nav-left">
+        <a class="logo" href="/" aria-label="Orenio home"><span class="oren">OREN</span><span class="io">IO</span></a>
+        <span class="nav-label">Privacy Policy</span>
+      </div>
+      <div class="nav-actions">
+        <button class="btn" id="theme-toggle" type="button" aria-label="Toggle day/night theme" title="Toggle day/night theme">
+          <span id="theme-icon" aria-hidden="true">☀</span>
+          <span class="theme-toggle__label" id="theme-label">Day</span>
+        </button>
+        <a class="btn btn-primary" href="/terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <section class="hero-card" aria-labelledby="privacy-title">
+        <div class="eyebrow">Legal</div>
+        <h1 id="privacy-title">Privacy Policy</h1>
+        <p class="lede">This policy covers both the Orenio website and the Orenio mobile app. It explains what we collect, what we do not collect, and how limited technical data is handled for the app.</p>
+        <div class="meta" aria-label="Policy dates">
+          <span><strong>Effective date:</strong> 22 February 2026</span>
+          <span><strong>Last updated:</strong> 22 February 2026</span>
+        </div>
+        <div class="notice-grid" aria-label="Website privacy highlights">
+          <section class="notice">
+            <h2>Website tracking</h2>
+            <p>This website does not run analytics, advertising pixels, or tracking cookies.</p>
+          </section>
+          <section class="notice">
+            <h2>Cookie banner</h2>
+            <p>Because no non-essential cookies or tracking technologies are used on this website, we do not currently display a cookie consent popup.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="prose-wrap" aria-labelledby="full-policy-title">
+        <div class="prose">
+          <h2 id="full-policy-title">Scope of this policy (website and app)</h2>
+          <p>This privacy policy explains how Orenio ("we", "us", "our") handles information when you use the Orenio website (the "Website") and the Orenio mobile application (the "App"). We are committed to protecting your privacy and being transparent about our data practices.</p>
+          <p><strong>Website (this landing site):</strong> We do not collect personal data through analytics, advertising tools, or tracking pixels. We do not set cookies for analytics or marketing.</p>
+          <p><strong>Website local preferences:</strong> If you use the day/night theme switch on the Website, your theme preference may be stored in your browser using local storage so the site can remember your choice on that device. This preference stays in your browser and is not transmitted to us.</p>
+          <p><strong>Third-party links and assets on the Website:</strong> The Website links to third-party platforms such as the Apple App Store and Google Play. The Website also loads fonts from Google Fonts. Those services may receive standard technical request information (such as your IP address and browser details) when your browser connects to them. Their handling of that data is governed by their own policies.</p>
+
+          <hr class="divider" />
+
+          <p>This privacy policy explains how Orenio ("we", "us", "our") handles information when you use the Orenio mobile application ("the App"). We are committed to protecting your privacy and being transparent about our data practices.</p>
+
+          <h2>1. What we do not collect</h2>
+          <p>Orenio does <strong>not</strong> collect, store, or transmit any personally identifiable information. Specifically:</p>
+          <ul>
+            <li>We do not require an account, email address, or login of any kind.</li>
+            <li>We do not collect your name, phone number, or contact details.</li>
+            <li>We do not access your camera, microphone, contacts, photos, or location.</li>
+            <li>We do not use advertising identifiers (IDFA/GAID) or run any advertising.</li>
+            <li>We do not sell, rent, or share any data with third parties for marketing or advertising purposes.</li>
+          </ul>
+          <p>All of your session data, labels, settings, and history are stored <strong>locally on your device only</strong> and are never transmitted to our servers or any third party.</p>
+
+          <h2>2. What we do collect</h2>
+          <p>We use Google Firebase to collect limited, anonymous technical data for the sole purposes of improving app stability and understanding general usage patterns.</p>
+
+          <h3>2.1 Firebase Crashlytics</h3>
+          <p>When the App crashes or encounters an error, Firebase Crashlytics automatically collects:</p>
+          <ul>
+            <li>Crash logs and stack traces</li>
+            <li>Device model and manufacturer</li>
+            <li>Operating system name and version</li>
+            <li>App version and build number</li>
+            <li>General device state at the time of the crash (e.g. available memory, orientation)</li>
+          </ul>
+          <p>This data does <strong>not</strong> include any personally identifiable information. It is used exclusively to identify and fix bugs.</p>
+
+          <h3>2.2 Firebase Analytics</h3>
+          <p>We collect anonymous usage events to understand how the App is used in aggregate. This includes:</p>
+          <ul>
+            <li>Anonymous event data such as timer starts, completions, and skips</li>
+            <li>Settings changes</li>
+            <li>Streak milestones</li>
+            <li>General engagement metrics (daily/monthly active users, session duration)</li>
+            <li>Device type, operating system, and app version</li>
+          </ul>
+          <p>Firebase Analytics does <strong>not</strong> collect advertising identifiers in Orenio. No user-level identification is performed. All data is aggregated and anonymous.</p>
+
+          <h2>3. Legal basis for processing (GDPR)</h2>
+          <p>For users in the European Economic Area (EEA) and the United Kingdom, we process the limited data described above under <strong>Article 6(1)(f) of the GDPR -- legitimate interest</strong>. Our legitimate interests are:</p>
+          <ul>
+            <li>Maintaining app stability and fixing crashes (Crashlytics)</li>
+            <li>Understanding aggregate usage patterns to improve the product (Analytics)</li>
+          </ul>
+          <p>We have assessed that these interests do not override your fundamental rights and freedoms, particularly because:</p>
+          <ul>
+            <li>No personally identifiable information is collected</li>
+            <li>No data is used for advertising, profiling, or automated decision-making</li>
+            <li>You can opt out at any time by uninstalling the App</li>
+          </ul>
+
+          <h2>4. Third-party services</h2>
+          <p>The App uses the following third-party service:</p>
+          <p><strong>Google Firebase</strong> (including Firebase Crashlytics and Firebase Analytics), operated by Google LLC. Firebase may process data on servers located in the United States or other countries. Google's data processing is governed by:</p>
+          <ul>
+            <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
+            <li><a href="https://firebase.google.com/terms/data-processing-terms" target="_blank" rel="noopener noreferrer">Firebase Data Processing Terms</a></li>
+            <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Privacy Information</a></li>
+          </ul>
+          <p>We do not use any other third-party services that collect or process user data in the App.</p>
+
+          <h2>5. Data retention</h2>
+          <ul>
+            <li><strong>Crash and analytics data</strong> is retained by Firebase according to Google's default retention policies (typically 90 days for crash data; analytics data is retained in aggregate indefinitely but individual event data expires after 14 months by default).</li>
+            <li><strong>Local data</strong> (sessions, labels, settings) remains on your device until you clear the App's data or uninstall it. We have no access to this data.</li>
+          </ul>
+
+          <h2>6. Data security</h2>
+          <p>All communication between the App and Firebase services is encrypted in transit using HTTPS/TLS. Local data is stored in the App's sandboxed storage area, protected by the operating system's built-in security model.</p>
+
+          <h2>7. Your rights</h2>
+          <h3>7.1 GDPR (EEA and UK residents)</h3>
+          <p>Under the General Data Protection Regulation, you have the right to:</p>
+          <ul>
+            <li><strong>Access</strong> the personal data we hold about you</li>
+            <li><strong>Rectification</strong> of inaccurate data</li>
+            <li><strong>Erasure</strong> ("right to be forgotten")</li>
+            <li><strong>Restriction</strong> of processing</li>
+            <li><strong>Data portability</strong></li>
+            <li><strong>Object</strong> to processing based on legitimate interest</li>
+            <li><strong>Lodge a complaint</strong> with your local data protection authority</li>
+          </ul>
+          <p>Because we do not collect any personally identifiable information and cannot link any collected data to an individual, most of these rights are satisfied by default. If you wish to exercise any of these rights or have questions, please contact us at the address below.</p>
+
+          <h3>7.2 CCPA (California residents)</h3>
+          <p>Under the California Consumer Privacy Act, you have the right to:</p>
+          <ul>
+            <li>Know what personal information is collected about you</li>
+            <li>Request deletion of your personal information</li>
+            <li>Opt out of the sale of your personal information</li>
+            <li>Non-discrimination for exercising your rights</li>
+          </ul>
+          <p>We do <strong>not</strong> sell personal information. We do <strong>not</strong> collect personal information as defined by the CCPA. If you have questions, please contact us.</p>
+
+          <h2>8. Children's privacy</h2>
+          <p>Orenio is not directed at children under the age of 13 (or 16 in the EEA). We do not knowingly collect any information from children. If you believe a child has somehow provided us with personal information, please contact us and we will take steps to delete it.</p>
+
+          <h2>9. Changes to this policy</h2>
+          <p>We may update this privacy policy from time to time. When we do, we will update the "Last updated" date at the top of this page. Your continued use of the App after any changes constitutes acceptance of the updated policy.</p>
+          <p>We encourage you to review this policy periodically.</p>
+
+          <h2>10. Contact us</h2>
+          <p>If you have any questions or concerns about this privacy policy or our data practices, please contact us at:</p>
+          <p><strong>Email:</strong> <a href="mailto:davemorriscode@gmail.com">davemorriscode@gmail.com</a></p>
+
+          <a class="back-home" href="/">&larr; Back to Orenio</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>&copy; 2025 Orenio. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="/terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var storageKey = 'orenio-theme';
+      var root = document.documentElement;
+      var toggle = document.getElementById('theme-toggle');
+      var icon = document.getElementById('theme-icon');
+      var label = document.getElementById('theme-label');
+
+      function getStoredTheme() {
+        try {
+          var saved = localStorage.getItem(storageKey);
+          return saved === 'light' || saved === 'dark' ? saved : null;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function getResolvedTheme() {
+        var explicit = root.dataset.theme;
+        if (explicit === 'light' || explicit === 'dark') return explicit;
+        return 'light';
+      }
+
+      function setTheme(theme) {
+        if (theme === 'light' || theme === 'dark') {
+          root.dataset.theme = theme;
+          try { localStorage.setItem(storageKey, theme); } catch (e) {}
+        } else {
+          delete root.dataset.theme;
+          try { localStorage.removeItem(storageKey); } catch (e) {}
+        }
+        renderToggle();
+      }
+
+      function renderToggle() {
+        var mode = getResolvedTheme();
+        var isDark = mode === 'dark';
+        if (icon) icon.textContent = isDark ? '☾' : '☀';
+        if (label) label.textContent = isDark ? 'Night' : 'Day';
+        if (toggle) {
+          toggle.setAttribute('aria-pressed', String(isDark));
+          toggle.setAttribute('aria-label', isDark ? 'Switch to day theme' : 'Switch to night theme');
+          toggle.title = (getStoredTheme() ? 'Manual theme selected. ' : 'Light theme is the default. ') +
+            (isDark ? 'Switch to day theme' : 'Switch to night theme');
+        }
+      }
+
+      var saved = getStoredTheme();
+      if (saved) root.dataset.theme = saved;
+      renderToggle();
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          setTheme(getResolvedTheme() === 'dark' ? 'light' : 'dark');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
