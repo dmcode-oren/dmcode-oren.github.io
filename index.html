@@ -388,6 +388,32 @@
       border: 1px solid var(--border-soft);
     }
 
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .theme-image--dark {
+      display: none;
+    }
+
+    :root[data-theme='dark'] .theme-image--light {
+      display: none;
+    }
+
+    :root[data-theme='dark'] .theme-image--dark {
+      display: block;
+    }
+
     .placeholder-box {
       width: 100%;
       height: 100%;
@@ -697,8 +723,9 @@
         <div class="hero-visual">
           <div class="hero-glow" aria-hidden="true"></div>
           <figure class="phone-placeholder" role="img" aria-label="Orenio timer screen showing a circular progress ring in orange on a dark background with large countdown numbers and minimal controls">
-            <div class="placeholder-box">
-              Orenio timer screen showing a circular progress ring in orange on a dark background with large countdown numbers and minimal controls
+            <div class="phone-screen">
+              <img class="theme-image--light" src="img/light_1.png" alt="" aria-hidden="true" width="1170" height="2532" loading="eager" decoding="async" />
+              <img class="theme-image--dark" src="img/dark_1.png" alt="" aria-hidden="true" width="1170" height="2532" loading="eager" decoding="async" />
             </div>
           </figure>
           <div class="hero-store store-buttons" aria-label="Download Orenio">
@@ -770,25 +797,28 @@
         <div class="screenshot-row" aria-label="Orenio app screenshots">
           <div class="screenshot-item">
             <figure class="phone-placeholder" role="img" aria-label="Orenio timer screen in dark mode with orange circular progress ring, countdown at 24:38, and FOCUS label">
-              <div class="placeholder-box">Orenio timer screen in dark mode with orange circular progress ring, countdown at 24:38, and FOCUS label</div>
+              <div class="phone-screen">
+                <img class="theme-image--light" src="img/light_2.png" alt="" aria-hidden="true" width="1170" height="2532" loading="lazy" decoding="async" />
+                <img class="theme-image--dark" src="img/dark_2.png" alt="" aria-hidden="true" width="1170" height="2532" loading="lazy" decoding="async" />
+              </div>
             </figure>
           </div>
 
           <div class="screenshot-item">
             <figure class="phone-placeholder" role="img" aria-label="Orenio insights screen in dark mode showing today's focus time, weekly stats, streak counter, and a 7-day bar chart in orange">
-              <div class="placeholder-box">Orenio insights screen in dark mode showing today's focus time, weekly stats, streak counter, and a 7-day bar chart in orange</div>
+              <div class="phone-screen">
+                <img class="theme-image--light" src="img/light_3.png" alt="" aria-hidden="true" width="1170" height="2532" loading="lazy" decoding="async" />
+                <img class="theme-image--dark" src="img/dark_3.png" alt="" aria-hidden="true" width="1170" height="2532" loading="lazy" decoding="async" />
+              </div>
             </figure>
           </div>
 
           <div class="screenshot-item">
             <figure class="phone-placeholder" role="img" aria-label="Orenio history screen in dark mode showing sessions grouped by date with labels and duration">
-              <div class="placeholder-box">Orenio history screen in dark mode showing sessions grouped by date with labels and duration</div>
-            </figure>
-          </div>
-
-          <div class="screenshot-item">
-            <figure class="phone-placeholder" role="img" aria-label="Orenio settings screen in dark mode showing appearance toggle, timer durations, and notification preferences">
-              <div class="placeholder-box">Orenio settings screen in dark mode showing appearance toggle, timer durations, and notification preferences</div>
+              <div class="phone-screen">
+                <img class="theme-image--light" src="img/light_4.png" alt="" aria-hidden="true" width="1170" height="2532" loading="lazy" decoding="async" />
+                <img class="theme-image--dark" src="img/dark4.png" alt="" aria-hidden="true" width="1170" height="2532" loading="lazy" decoding="async" />
+              </div>
             </figure>
           </div>
         </div>
